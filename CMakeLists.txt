@@ -48,14 +48,6 @@ if (RECASTNAVIGATION_ENABLE_FAST_MATH)
     add_compile_definitions(RC_FAST_MATH)
 endif()
 
-# Disable RTTI and exceptions for library code
-if(MSVC)
-    string(REPLACE "/GR" "/GR-" CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS}")
-    string(REPLACE "/EHsc" "/EHs-c-" CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS}")
-else()
-    add_compile_options(-fno-rtti -fno-exceptions)
-endif()
-
 # Debug symbols
 set(CMAKE_MSVC_DEBUG_INFORMATION_FORMAT "$<$<CONFIG:Debug,RelWithDebInfo>:ProgramDatabase>")
 if(NOT MSVC)
